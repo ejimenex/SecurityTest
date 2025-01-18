@@ -11,6 +11,8 @@ namespace SecurityTest.Persistence.Repositories.Base
 
         public virtual async Task<T> AddAsync(T entity)
         {
+            entity.CreatedDate = DateTime.Now;
+            entity.IsActive = true;
             await _dbContext.Set<T>().AddAsync(entity);
             await _dbContext.SaveChangesAsync();
             return entity;

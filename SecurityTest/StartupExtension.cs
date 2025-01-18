@@ -39,8 +39,8 @@ namespace SecurityTest
         app.UseHttpsRedirection();
         app.UseRouting();
         app.UseCors("Open");;
-
-        app.MapControllers();
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
+            app.MapControllers();
         return app;
     }
 }

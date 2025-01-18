@@ -1,5 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SecurityTest.Application.Feactures.User.Command.CreateUser;
+using SecurityTest.Domain.Entities;
+using System.Data;
 
 namespace SecurityTest.Controllers
 {
@@ -8,10 +11,10 @@ namespace SecurityTest.Controllers
     [ApiController]
     public class UsersController(IMediator mediator) : ControllerBase
     {
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpPost]
+        public async Task<ActionResult<Users>> CreateUser(CreateUserCommand dto)
         {
-            return Ok("User Controller");
+            return Ok(await mediator.Send(dto));
         }
     }
 }
