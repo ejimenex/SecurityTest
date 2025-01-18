@@ -7,10 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contract\" />
-    <Folder Include="Exception\" />
     <Folder Include="Feactures\" />
-    <Folder Include="Behaviours\" />
     <Folder Include="Profiles\" />
   </ItemGroup>
 
