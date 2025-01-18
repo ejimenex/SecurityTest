@@ -10,5 +10,9 @@ namespace SecurityTest.Persistence
             
         }
         public DbSet<Users> Users { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(SecurityTestDataContext).Assembly);
+        }
     }
 }

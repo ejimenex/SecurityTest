@@ -3,12 +3,13 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Feactures\" />
-    <Folder Include="Profiles\" />
+    <Folder Include="Feactures\User\Command\DeleteUser\" />
+    <Folder Include="Feactures\User\Command\UpdateUser\" />
+    <Folder Include="Feactures\User\Queries\GetAllUser\" />
   </ItemGroup>
 
   <ItemGroup>
