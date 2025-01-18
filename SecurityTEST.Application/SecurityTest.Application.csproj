@@ -7,7 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Feactures\" />
+    <Folder Include="Feactures\User\Command\CreateUser\" />
+    <Folder Include="Feactures\User\Command\DeleteUser\" />
+    <Folder Include="Feactures\User\Command\UpdateUser\" />
+    <Folder Include="Feactures\User\Queries\GetAllUser\" />
     <Folder Include="Profiles\" />
   </ItemGroup>
 
