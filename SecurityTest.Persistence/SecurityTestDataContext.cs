@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SecurityTest.Domain.Entities;
 
 namespace SecurityTest.Persistence
 {
@@ -6,6 +7,8 @@ namespace SecurityTest.Persistence
     {
         public SecurityTestDataContext(DbContextOptions<SecurityTestDataContext> options) : base(options)
         {
+            
         }
+        public DbSet<Users> Users { get; set; }
     }
 }
