@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace SecurityTest.Application.Feactures.User.Command.CreateUser
 {
-    public class CreateUserValidation : AbstractValidator<CreateUserCommand>
+    public class UpdateUserValidation : AbstractValidator<UpdateUserCommand>
     {
         private readonly IAsyncRepository<Users> _userRepository;
-        public CreateUserValidation(IAsyncRepository<Users> userRespository)
+        public UpdateUserValidation(IAsyncRepository<Users> userRespository)
         {
             _userRepository = userRespository;
             RuleFor(p => p.Name).NotEmpty().WithMessage("Name it is Required.")
@@ -25,11 +25,11 @@ namespace SecurityTest.Application.Feactures.User.Command.CreateUser
             RuleFor(p => p.Email).EmailAddress().WithMessage("Invalid Email Format");
 
             RuleFor(p=> p.Role).Must(p => p.Equals("admin") || p.Equals("user")).WithMessage("The role must be Admin or User");
-            RuleFor(c => c).MustAsync(ValidateEmailExist).WithMessage("This email already exist.");
+            RuleFor(c => c).MustAsync(ValidateEmailExist).WithMessage("This email already exist in other record");
 
 
 
         }
-         private async Task<bool> ValidateEmailExist(CreateUserCommand e, CancellationToken token) => (!await _userRepository.ExistAsync(c=> c.Email.Equals(e.Email) && c.IsActive));
+         private async Task<bool> ValidateEmailExist(UpdateUserCommand e, CancellationToken token) => (!await _userRepository.ExistAsync(c=> c.Email.Equals(e.Email) && c.Id != e.Id && c.IsActive));
     }
 }
