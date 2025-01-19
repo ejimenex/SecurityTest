@@ -23,7 +23,7 @@ namespace SecurityTest.Persistence.Repositories.Base
             await _dbContext.SaveChangesAsync();
         }
 
-        public virtual async Task<T> GetByIdAsync(int Id) => await _dbContext.Set<T>().FindAsync(Id);
+        public virtual async Task<T> GetByIdAsync(int Id) => await _dbContext.Set<T>().FirstOrDefaultAsync(c=> c.Id==Id && c.IsActive);
         public IQueryable<T> GetByExpressionAsync(Expression<Func<T, bool>> expression) => _dbContext.Set<T>().Where(expression).AsQueryable();
         public virtual async Task<IReadOnlyList<T>> ListAllAsync() => await _dbContext.Set<T>().ToListAsync();
         public virtual async Task UpdateAsync(T entity)

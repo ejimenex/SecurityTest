@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
+using SecurityTest.Application.Common;
 using SecurityTest.Application.Contract.Percistence;
 using SecurityTest.Domain.Entities;
 
 namespace SecurityTest.Application.Feactures.User.Command.CreateUser
 {
-    public class CreateUserCommand : IRequest<Users>
+    public class CreateUserCommand : IRequest<ApiResponse<Users>>
     { 
      public string Email { get; set; }
      public string UserName { get; set; }
@@ -14,12 +15,12 @@ namespace SecurityTest.Application.Feactures.User.Command.CreateUser
 
 
     }
-    public class CreateUserCommandHandler(IAsyncRepository<Users> userRepository, IMapper _mapper) : IRequestHandler<CreateUserCommand, Users>
+    public class CreateUserCommandHandler(IAsyncRepository<Users> userRepository, IMapper _mapper) : IRequestHandler<CreateUserCommand, ApiResponse<Users>>
     {
-        public async Task<Users> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse<Users>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = _mapper.Map<Users>(request);
-            return await userRepository.AddAsync(user);
+           var user=  await userRepository.AddAsync(_mapper.Map<Users>(request));
+            return new ApiResponse<Users> { Message = "User added sucessfully", Sucess = true, Result = user }; 
         }
     }
 }

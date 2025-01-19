@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Feactures\User\Command\DeleteUser\" />
     <Folder Include="Feactures\User\Command\UpdateUser\" />
     <Folder Include="Feactures\User\Queries\GetAllUser\" />
   </ItemGroup>
