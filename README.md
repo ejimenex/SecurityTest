@@ -13,7 +13,7 @@ Este proyecto es un api para crear usuarios.
 
 ## En caso de tener inconvenientes con el migration, ejecutar el siguiente query en su servidor
 
---- CREATE DATABASE [SecurityTest]
+```sql CREATE DATABASE [SecurityTest]
 use [SecurityTest]
 GO
 ALTER DATABASE [SecurityTest] SET COMPATIBILITY_LEVEL = 160
