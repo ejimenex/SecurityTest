@@ -14,7 +14,7 @@ namespace SecurityTest.Persistence.Configuration
             builder.Property(c => c.Name).HasMaxLength(500).IsRequired();
             builder.Property(c => c.Email).HasMaxLength(100).IsRequired();
             builder.Property(c => c.UserName).HasMaxLength(500).IsRequired();
-            builder.HasIndex(c => c.Email).IsUnique();
+          
         }
 
     }
