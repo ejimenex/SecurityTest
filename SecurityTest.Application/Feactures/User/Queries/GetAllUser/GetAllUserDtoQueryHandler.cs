@@ -14,7 +14,7 @@ namespace SecurityTest.Application.Feactures.User.Queries.GetAllUser
     {
         public async Task<ApiResponse<List<UserDto>>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-           var user = await Task.Run(()=> userRepository.GetByExpressionAsync(c=> !c.IsActive).ToList());
+           var user = await Task.Run(()=> userRepository.GetByExpressionAsync(c=> c.IsActive).ToList());
            return new ApiResponse<List<UserDto>> { Message = null, Sucess = true, Result = mapper.Map<List<UserDto>>(user) };
         }
     }
