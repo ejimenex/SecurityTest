@@ -4,9 +4,14 @@
 
 Este proyecto es un api para crear usuarios.
 
+## Arquitectura
+
+El api esta hecho en .net 8, usando el patron de arquitectura CQRS (Command Query Responsibility Segregation) para separar todas las logicas, es decir la lectura y la escritura en el código.
+Para mas información acerca de la arquitectura ver [CQRS](https://learn.microsoft.com/es-es/azure/architecture/patterns/cqrs)
+
 ## Como se usa?
 
-- Luego de clonado, debe tener instalado .net 8 en su computadora.
+- Luego de clonado, debe tener instalado .net 8 en su computadora, debe trabajar en la rama master o develop.
 - Debe cambiar el connection string y cambiarlo para que apunte a su servidor de base de datos.
 - Debe correr un migration para que se cree la tabla en su servidor de base de datos
 - Ejeutar este comando update-database SecondMigration
