@@ -10,7 +10,6 @@ namespace SecurityTest.Application.Feactures.User.Command.CreateUser
     { 
     public int Id { get; set; }
      public string Email { get; set; }
-     public string UserName { get; set; }
      public string Name { get; set; }
      public string Role { get; set; } = "user";
 
@@ -23,11 +22,11 @@ namespace SecurityTest.Application.Feactures.User.Command.CreateUser
             var entity = await userRepository.GetByIdAsync(request.Id);
             if (entity is null)
             {
-                return new ApiResponse<Users> { Message = "User not found", Sucess = false, Result = entity };
+                return new ApiResponse<Users> { Message = "Usuario no encontrado", Sucess = false, Result = entity };
             }
             _mapper.Map(request, entity, typeof(UpdateUserCommand), typeof(Users));
             await userRepository.UpdateAsync(entity);
-            return new ApiResponse<Users> { Message = "User updated sucessfully", Sucess = true, Result = entity }; 
+            return new ApiResponse<Users> { Message = "Usuario editado con exito", Sucess = true, Result = entity }; 
         }
     }
 }
