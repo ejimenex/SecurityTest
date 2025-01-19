@@ -15,11 +15,11 @@ namespace SecurityTest.Application.Feactures.User.Command.DeleteUser
             var user = await userRepository.GetByIdAsync(request.Id);
             if (user == null)
             {
-                return new ApiResponse<Users> { Message= $"User with Id {request.Id} not found.", Sucess=false,Result=null};
+                return new ApiResponse<Users> { Message= $"Usuario con Id {request.Id} no encontrado.", Sucess=false,Result=null};
             }
             user.IsActive = false;
             await userRepository.UpdateAsync(user);
-            return new ApiResponse<Users> { Message = $"User with Id {request.Id} is deleted.", Sucess = true, Result = user };
+            return new ApiResponse<Users> { Message = $"Usuario con Id {request.Id} ha sido borrado.", Sucess = true, Result = user };
 
         }
     }
