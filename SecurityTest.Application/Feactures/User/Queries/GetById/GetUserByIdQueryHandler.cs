@@ -18,7 +18,7 @@ namespace SecurityTest.Application.Feactures.User.Queries.GetById
             var user = await  userRepository.GetByIdAsync(request.Id);
             if (user is null)
             { 
-            return new ApiResponse<UserDto> { Message = "User not found", Sucess = false, Result = null };
+            return new ApiResponse<UserDto> { Message = "Usuario no encontrado", Sucess = false, Result = null };
 
             }
             return new ApiResponse<UserDto> { Message = null, Sucess = true, Result = mapper.Map<UserDto>(user) };

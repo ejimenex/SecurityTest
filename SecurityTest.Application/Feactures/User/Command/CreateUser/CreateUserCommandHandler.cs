@@ -3,13 +3,13 @@ using MediatR;
 using SecurityTest.Application.Common;
 using SecurityTest.Application.Contract.Percistence;
 using SecurityTest.Domain.Entities;
+using System.Text.RegularExpressions;
 
 namespace SecurityTest.Application.Feactures.User.Command.CreateUser
 {
     public class CreateUserCommand : IRequest<ApiResponse<Users>>
     { 
      public string Email { get; set; }
-     public string UserName { get; set; }
      public string Name { get; set; }
      public string Role { get; set; } = "user";
 
@@ -19,8 +19,10 @@ namespace SecurityTest.Application.Feactures.User.Command.CreateUser
     {
         public async Task<ApiResponse<Users>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-           var user=  await userRepository.AddAsync(_mapper.Map<Users>(request));
-            return new ApiResponse<Users> { Message = "User added sucessfully", Sucess = true, Result = user }; 
+            Users user = _mapper.Map<Users>(request);
+            user.UserName = Regex.Replace(request.Email, @"@.*", "");
+            await userRepository.AddAsync(user);
+            return new ApiResponse<Users> { Message = "Usuario insertado exitosamente", Sucess = true, Result = user }; 
         }
     }
 }
